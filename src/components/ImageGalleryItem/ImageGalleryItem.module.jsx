@@ -4,14 +4,15 @@ export const GalleryItem = styled.li`
   position: relative;
   overflow: hidden;
   max-width: 400px;
+  border: 1px solid #7fe0cd;
+  border-radius: 8px;
   padding: 5px;
-  transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 1px 1px 5px #2b647e;
 
-  :hover,
-  :focus {
-    box-shadow: 0px 1px 14px #19282f;
-    border: 1px solid #f9f9f9;
+  &:hover,
+  &:focus {
+    transform: scale(1.02);
   }
 `;
 
@@ -20,9 +21,9 @@ export const GalleryImg = styled.img`
   height: 260px;
   object-fit: cover;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 8px;
+  border-radius: 18px;
 
-  :hover {
+  $:hover {
     cursor: zoom-in;
   }
 `;

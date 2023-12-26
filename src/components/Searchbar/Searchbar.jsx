@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Searchbar } from './Searchbar.module';
+import { SearchBox, SearchForm, SearchBtn, SearchInput } from './Searchbar.module';
 
 export default class Searchbar extends Component {
   state = {
@@ -17,12 +17,12 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <header className="searchbar">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <button type="submit" className="button">
+      <SearchBox className="searchbar">
+        <SearchForm className="form" onSubmit={this.handleSubmit}>
+          <SearchBtn type="submit" className="button">
             <span className="button-label">Search</span>
-          </button>
-          <input
+          </SearchBtn>
+          <SearchInput
             className="input"
             type="text"
             autoComplete="off"
@@ -31,8 +31,8 @@ export default class Searchbar extends Component {
             value={this.state.query}
             onChange={this.handleChange}
           />
-        </form>
-      </header>
+        </SearchForm>
+      </SearchBox>
     );
   }
 }

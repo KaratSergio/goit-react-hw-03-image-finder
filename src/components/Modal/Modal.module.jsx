@@ -9,7 +9,7 @@ export const CustomOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 1200;
 `;
 
 export const CustomModalContent = styled.div`

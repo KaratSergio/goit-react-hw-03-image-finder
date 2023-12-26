@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Gallery } from './ImageGallery.module';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem'; 
+import { Gallery } from './ImageGallery.module';
 
 export class ImageGallery extends Component {
   render() {
