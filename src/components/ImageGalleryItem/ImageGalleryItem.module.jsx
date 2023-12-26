@@ -23,7 +23,7 @@ export const GalleryImg = styled.img`
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 18px;
 
-  $:hover {
+  &:hover {
     cursor: zoom-in;
   }
 `;

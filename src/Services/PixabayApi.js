@@ -25,7 +25,7 @@ export default class ImageApiService {
       });
 
       this._incrementPage();
-      this._setTotalResults(response.data.total); // Додано
+      this._setTotalResults(response.data.total);
       return response.data.hits;
     } catch (error) {
       throw error;
