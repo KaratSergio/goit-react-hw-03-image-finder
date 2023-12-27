@@ -51,7 +51,7 @@ export const SearchInput = styled.input`
 
   &::placeholder {
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     opacity: 0.4; 
   }
 `;
