@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
-import { CustomOverlay, CustomModalContent } from './Modal.module'
-
+import { Component } from 'react';
+import { CustomOverlay, CustomModalContent } from './Modal.module';
 
 export class Modal extends Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyPress);
+    document.body.style.position = '';
+    document.body.style.width = '';
   }
 
   handleKeyPress = (e) => {
@@ -24,11 +27,11 @@ export class Modal extends Component {
   };
 
   render() {
-    const { isOpen, imageUrl, alt } = this.props;
+    const { imageUrl, alt } = this.props;
 
     return (
-      <CustomOverlay className={`overlay ${isOpen ? 'open' : ''}`} onClick={this.handleOverlayClick}>
-        <CustomModalContent className="modal" onClick={(e) => e.stopPropagation()}>
+      <CustomOverlay id="overlay" onClick={this.handleOverlayClick}>
+        <CustomModalContent onClick={(e) => e.stopPropagation()}>
           <img src={imageUrl} alt={alt} />
         </CustomModalContent>
       </CustomOverlay>
@@ -37,3 +40,4 @@ export class Modal extends Component {
 }
 
 export default Modal;
+

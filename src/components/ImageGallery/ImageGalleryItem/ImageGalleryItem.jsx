@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from '../Modal/Modal';
+import { Modal } from '../../Modal/Modal';
 import { GalleryItem, GalleryImg } from './ImageGalleryItem.module';
 
 export class ImageGalleryItem extends Component {
@@ -9,28 +9,24 @@ export class ImageGalleryItem extends Component {
   };
 
   toggleModal = () => {
-    this.setState(({ isModalOpen }) => ({ isModalOpen: !isModalOpen }));
+    this.setState(prevState => ({ isModalOpen: !prevState.isModalOpen }));
   };
 
   render() {
     const {
       galleryItem: { webformatURL, largeImageURL, tags },
-      onImageClick,
     } = this.props;
 
     return (
       <>
-        <GalleryItem
-          className="gallery-item"
-          onClick={() => onImageClick(largeImageURL)}
-        >
+        <GalleryItem onClick={this.toggleModal}>
           <GalleryImg src={webformatURL} alt={tags} />
         </GalleryItem>
         {this.state.isModalOpen && (
           <Modal
-            largeImageURL={largeImageURL}
+            imageUrl={largeImageURL}
             alt={tags}
-            onCloseModal={this.toggleModal}
+            onClose={() => this.setState({ isModalOpen: false })}
           />
         )}
       </>
@@ -44,7 +40,6 @@ ImageGalleryItem.propTypes = {
     largeImageURL: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
   }).isRequired,
-  onImageClick: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;

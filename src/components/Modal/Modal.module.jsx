@@ -10,8 +10,11 @@ export const CustomOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1200;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const CustomModalContent = styled.div`
   overflow: hidden;
+  border: 3px double #000000;
+  border-radius: 12px;
 `;

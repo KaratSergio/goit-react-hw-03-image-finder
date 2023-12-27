@@ -7,8 +7,7 @@ export const  Loader = () => {
     height="80"
     width="80"
     ariaLabel="hourglass-loading"
-    wrapperStyle={{}}
-    wrapperClass=""
+    wrapperStyle={{ margin: '0 auto' }}
     colors={['#c6ce30', '#72a1ed']}
     />
   );

@@ -3,7 +3,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from 'uuid';
 
-import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
 import Searchbar from '../Searchbar/Searchbar';
@@ -106,8 +105,7 @@ export class App extends Component {
   };
 
   render() {
-    const { galleryItems, loading, isButtonShow, error, selectedImage } =
-      this.state;
+    const { galleryItems, loading, isButtonShow, error } = this.state;
 
     return (
       <AppContent>
@@ -122,14 +120,7 @@ export class App extends Component {
         )}
         {loading && <Loader />}
         {isButtonShow && <Button onClick={this.onLoadMore} />}
-        {selectedImage && (
-          <Modal
-            isOpen={true}
-            imageUrl={selectedImage}
-            onClose={this.toggleModal}
-            alt="Selected Image"
-          />
-        )}
+
         <ToastContainer autoClose={3000} theme="colored" />
       </AppContent>
     );
