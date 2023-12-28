@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
 import Searchbar from '../Searchbar/Searchbar';
 import ImageGallery from '../ImageGallery/ImageGallery';
-import ImageApiService from '../../Services/PixabayApi';
+import { ImageApiService } from '../../services/pixabay_api';
 
 import { AppContent } from './App.module';
 
