@@ -3,7 +3,7 @@ import axios from 'axios';
 const PIXABAY_BASE_URL = 'https://pixabay.com/api/';
 const PIXABAY_API_KEY = '40643270-9522dad6da71c07e3e25300aa';
 
-export default class ImageApiService {
+export  class ImageApiService {
   searchTerm = '';
   totalResults = 0;
   currentPage = 1;
@@ -40,3 +40,5 @@ export default class ImageApiService {
     this.resetPage();
   }
 }
+
+export default ImageApiService;
