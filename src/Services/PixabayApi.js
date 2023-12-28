@@ -7,6 +7,7 @@ export default class ImageApiService {
   searchTerm = '';
   totalResults = 0;
   currentPage = 1;
+  perPage = 12;
 
   async getImages() {
     try {
@@ -18,7 +19,7 @@ export default class ImageApiService {
           orientation: 'horizontal',
           safesearch: true,
           page: this.currentPage,
-          per_page: 12,
+          per_page: this.perPage,
         },
       });
 

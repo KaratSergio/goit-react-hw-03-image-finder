@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
 import Searchbar from '../Searchbar/Searchbar';
 import ImageGallery from '../ImageGallery/ImageGallery';
-import ImageApiService from '../../Services/PixabayApi';
+import ImageApiService from '../../Services/pixabayApi';
 
 import { AppContent } from './App.module';
 
@@ -74,18 +74,29 @@ export class App extends Component {
         }));
 
         if (!data.length) {
-          this.setState({ loading: false, error: true });
+          this.setState({ loading: false, error: true, isButtonShow: false });
           toast.warn('Sorry, there are no images. Please try again.');
-        } else if (currentData.length >= apiService.totalResults) {
-          this.setState({ loading: false, isButtonShow: false, error: false });
         } else {
-          if (page === 1) {
-            toast.success(
-              `Hooray! We found ${apiService.totalResults} images.`
-            );
-          }
+          const currentPage = this.state.galleryPage;
+          const totalPages = Math.ceil(
+            apiService.totalResults / apiService.perPage
+          );
 
-          this.setState({ loading: false, isButtonShow: true, error: false });
+          if (currentPage >= totalPages) {
+            this.setState({
+              loading: false,
+              isButtonShow: false,
+              error: false,
+            });
+          } else {
+            if (page === 1) {
+              toast.success(
+                `Hooray! We found ${apiService.totalResults} images.`
+              );
+            }
+
+            this.setState({ loading: false, isButtonShow: true, error: false });
+          }
         }
       })
       .catch(error => {

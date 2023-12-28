@@ -1,4 +1,3 @@
-import React from 'react';
 import { LoadBtn } from './Button.module';
 
 export const Button = ({ onClick }) => {
