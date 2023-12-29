@@ -30,22 +30,6 @@ export class App extends Component {
     }));
   };
 
-  componentDidUpdate(_, prevState) {
-    const { searchQuery, galleryPage } = this.state;
-
-    if (prevState.searchQuery !== searchQuery) {
-      this.setState({
-        galleryPage: 1,
-        galleryItems: [],
-        isButtonShow: false,
-        error: false,
-      });
-      this.fetchGalleryItems(searchQuery, 1);
-    } else if (prevState.galleryPage !== galleryPage) {
-      this.fetchGalleryItems(searchQuery, galleryPage);
-    }
-  }
-
   fetchGalleryItems = (query, page) => {
     this.setState({ loading: true, error: false });
 
@@ -105,13 +89,21 @@ export class App extends Component {
   };
 
   handleFormSubmit = searchQuery => {
-    this.setState({ searchQuery });
+    this.setState({
+      searchQuery,
+      galleryPage: 1,
+      galleryItems: [],
+      isButtonShow: false,
+      error: false,
+    });
+    this.fetchGalleryItems(searchQuery, 1);
   };
 
   onLoadMore = () => {
     this.setState(prevState => ({
       galleryPage: prevState.galleryPage + 1,
     }));
+    this.fetchGalleryItems(this.state.searchQuery, this.state.galleryPage + 1);
   };
 
   render() {
