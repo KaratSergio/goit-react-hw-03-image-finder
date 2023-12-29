@@ -36,7 +36,7 @@ export class App extends Component {
     apiService.setSearchTerm(query);
 
     apiService
-      .getImages()
+      .getImages(page)
       .then(data => {
         const newData = data.map(
           ({ id, tags, webformatURL, largeImageURL }) => ({

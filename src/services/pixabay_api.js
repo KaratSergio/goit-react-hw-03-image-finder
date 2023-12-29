@@ -9,7 +9,7 @@ export  class ImageApiService {
   currentPage = 1;
   perPage = 12;
 
-  async getImages() {
+  async getImages(page) {
     try {
       const response = await axios.get(PIXABAY_BASE_URL, {
         params: {
@@ -18,11 +18,11 @@ export  class ImageApiService {
           image_type: 'photo',
           orientation: 'horizontal',
           safesearch: true,
-          page: this.currentPage,
+          page: page,
           per_page: this.perPage,
         },
       });
-
+  
       this.currentPage += 1;
       this.totalResults = response.data.total;
       return response.data.hits;
