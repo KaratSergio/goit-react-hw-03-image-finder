@@ -49,8 +49,7 @@ export class App extends Component {
   fetchGalleryItems = (query, page) => {
     this.setState({ loading: true, error: false });
 
-    apiService.searchTerm = query;
-    apiService.currentPage = page;
+    apiService.setSearchTerm(query);
 
     apiService
       .getImages()
